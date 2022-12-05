@@ -1,0 +1,29 @@
+<select #selectList (change)="selectCamera(selectList.value)">
+    <option *ngFor="let camera of cameras" value={{camera.label}}>
+      {{ camera.label }}
+    </option>
+  </select>
+  
+  <zxing-scanner style="width: 500px; height: 120px;"
+    [enable]="scannerEnabled"
+    [device]="myDevice"  [formats]="formatsEnabled"
+    (camerasFound)="camerasFoundHandler($event)"
+    (scanSuccess)="scanSuccessHandler($event)"
+  ></zxing-scanner>
+  <p *ngFor="let result of results">{{result}}</p>
+  
+  <br><hr>
+  <!--
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+  <div style="text-align:center">
+    <ngx-barcode6
+      [bc-format]="'EAN13'"
+      [bc-value]="'7791772049917'"
+      [bc-display-value]="true"
+    >
+    </ngx-barcode6>
+  </div>-->
